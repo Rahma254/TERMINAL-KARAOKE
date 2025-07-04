@@ -1,0 +1,10 @@
+// ✅ FILE: backend/api/webhook.js
+
+export default async function handler(req, res) { if (req.method !== 'POST') return res.status(405).end()
+
+try { const event = req.body
+
+console.log("📡 Webhook DITERIMA dari Supabase:") console.log(JSON.stringify(event, null, 2)) return res.status(200).json({ received: true }) 
+
+} catch (error) { console.error("❌ Webhook error:", error) return res.status(500).json({ error: 'Gagal memproses webhook' }) } }
+
